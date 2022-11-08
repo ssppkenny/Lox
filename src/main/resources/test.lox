@@ -1,0 +1,13 @@
+var b = 1; 
+var a = b;
+var c;
+2;
+{
+    var d = 5;
+}
+print a;
+while (a) print a;
+
+if (a) print a; else print b;
+
+
