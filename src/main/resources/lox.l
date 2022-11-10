@@ -35,6 +35,7 @@
 ">"     {return scan(Parser.GREATER); }
 "<="    {return scan(Parser.LESS_EQUALS); }
 "<"     {return scan(Parser.LESS); }
+"!"     {return scan(Parser.BANG);}
 "and"   {return scan(Parser.AND); }
 "class" {return scan(Parser.CLASS); }
 "else"  {return scan(Parser.ELSE); }
