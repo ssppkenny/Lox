@@ -96,6 +96,7 @@ whileStmt: WHILE LEFT_PAREN expression RIGHT_PAREN statement
 expression: assignment
 
 assignment: IDENTIFIER EQUALS expression
+	| call EQUALS expression
 	| logic_or
 
 logic_or: logic_and logic_ands
@@ -148,9 +149,6 @@ unary_sign: SLASH
 factor_sign: MINUS
 	| PLUS
 
-optCall: /* empty */
-	| call DOT
-
 arguments:
 	| expression
 	| expression expressions
@@ -160,10 +158,14 @@ expressions: /* empty */
 
 call: primary primary_blocks
 
-primary_block: LEFT_PAREN arguments RIGHT_PAREN
+
+arguments_group: /*empty*/
+	| arguments
+
+primary_block: LEFT_PAREN arguments_group RIGHT_PAREN
 	| DOT IDENTIFIER
 
-primary_blocks:
+primary_blocks: /*empty*/
 	| primary_blocks primary_block
 
 primary: TRUE

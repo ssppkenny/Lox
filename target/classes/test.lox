@@ -22,6 +22,7 @@ for (var i=1; i<1; i=i+1) {
 
 if (a) {
     x = -5;
+    y = -6 + 2;
     print a;
     a = a * 3 + 2;
     return a;
@@ -29,6 +30,7 @@ if (a) {
 
 while (a) {
     print a;
+    a = a + 1;
 }
 
 var imAVariable = "here is my value";
@@ -40,6 +42,7 @@ if (condition) {
 }
 
 makeBreakfast(bacon, eggs, toast);
+makeBreakfast();
 
 fun outerFunction(a, b) {
     test(a, b);
@@ -60,6 +63,11 @@ fun returnSum(a, b) {
   return a + b;
 }
 
+print identity(addPair)(1,2);
+
+var fn = returnFunction();
+fn();
+
 var a = 1;
 while (a < 10) {
   print a;
@@ -79,4 +87,56 @@ class Breakfast < A {
 var b = Breakfast("bacon", "toast");
 b.serve("Dear reader");
 
+b.meat = "sausage";
+
 print("test");
+
+print a;
+
+class Brunch < Breakfast {
+    init(meat, bread, drink) {
+        super.init(meat, bread);
+        this.drink = drink;
+    }
+}
+
+print "Hello World!";
+true;
+false;
+
+1234;
+12.34;
+
+"I am a string";
+"";
+"123";
+a + b;
+a - b;
+a * b;
+a / b;
+
+-negateMe;
+
+less < than;
+lessThan <= orEqual;
+greater > than;
+greaterThan >= orEqual;
+
+1 == 2;
+
+"cat" != "dog";
+
+314 == "pi";
+
+123 == "123";
+!true;
+
+true and false;
+
+var average = (min + max) / 2;
+{
+    print "one";
+    print "two";
+}
+
+var iAmNil;

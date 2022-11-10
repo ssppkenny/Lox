@@ -11,9 +11,10 @@
     }
 
     public int scan(int cat) {
-        Tree t = new Tree("token", 0, new Token(cat, yytext(), yylineno()));
-        yyparser.yylval = new ParserVal(t);
-        return cat;
+        Tree t1 = new Tree("t", 0, (Tree) null);
+       Tree t = new Tree("token", 0, t1);
+       yyparser.yylval = new ParserVal(t);
+       return cat;
     }
 %}
 %%
@@ -54,7 +55,7 @@
 "while"  {return  scan(Parser.WHILE); }
 [a-zA-Z_][a-zA-Z0-9_]*   {return  scan(Parser.IDENTIFIER); }
 \".*\"  { return scan(Parser.STRING); }
-[0-9]+  { return scan(Parser.NUMBER); }
+[0-9]+(\.\d+)?  { return scan(Parser.NUMBER); }
 [ \t\r]+ { }
 \n      { Lexer.incrementLineNumber(); }
 .       { Lexer.error("unrecognized character"); }
