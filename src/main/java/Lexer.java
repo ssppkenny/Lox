@@ -1,7 +1,6 @@
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
-import lox.Token;
 
 public class Lexer {
 
@@ -17,11 +16,6 @@ public class Lexer {
 
     static int scan(int cat, Yylex lex) {
         String value = lex.yytext();
-        if (cat == Parser.STRING) {
-            tokens.add(new Token(cat, value.substring(1, value.length()-1)));
-        } else {
-            tokens.add(new Token(cat, lex.yytext()));
-        }
         return cat;
     }
 
