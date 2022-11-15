@@ -1,0 +1,16 @@
+fun returnSum(a, b, c, d) {
+  return a + b + c + d;
+}
+
+fun f(a, b, c, d) {
+  return a + b + c + d;
+}
+
+class A {
+    f(x) {
+        return x + 1;
+    }
+}
+
+var a = 10;
+a = a + 1;

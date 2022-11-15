@@ -9,4 +9,10 @@ public class Expression {
         this.assignment = assignment;
     }
 
+    @Override
+    public String toString() {
+        return "Expression{" +
+                "assignment=" + assignment +
+                '}';
+    }
 }

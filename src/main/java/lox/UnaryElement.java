@@ -10,4 +10,12 @@ public class UnaryElement {
         this.sign = sign;
         this.unary = unary;
     }
+
+    @Override
+    public String toString() {
+        return "UnaryElement{" +
+                "sign='" + sign + '\'' +
+                ", unary=" + unary +
+                '}';
+    }
 }

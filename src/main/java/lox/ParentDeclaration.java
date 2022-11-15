@@ -7,4 +7,10 @@ public class ParentDeclaration implements OptionalParentDeclaration {
         this.identifier = identifier;
     }
 
+    @Override
+    public String toString() {
+        return "ParentDeclaration{" +
+                "identifier='" + identifier + '\'' +
+                '}';
+    }
 }

@@ -7,4 +7,11 @@ public class NormalElse implements Else {
     public NormalElse(Statement statement) {
         this.statement = statement;
     }
+
+    @Override
+    public String toString() {
+        return "NormalElse{" +
+                "statement=" + statement +
+                '}';
+    }
 }

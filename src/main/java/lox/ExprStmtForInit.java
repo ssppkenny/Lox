@@ -8,4 +8,10 @@ public class ExprStmtForInit implements FirstForInit {
         this.expressionStatement = expressionStatement;
     }
 
+    @Override
+    public String toString() {
+        return "ExprStmtForInit{" +
+                "expressionStatement=" + expressionStatement +
+                '}';
+    }
 }

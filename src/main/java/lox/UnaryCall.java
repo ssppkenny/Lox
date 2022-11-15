@@ -7,4 +7,11 @@ public class UnaryCall implements Unary {
     public UnaryCall(Call call) {
         this.call = call;
     }
+
+    @Override
+    public String toString() {
+        return "UnaryCall{" +
+                "call=" + call +
+                '}';
+    }
 }

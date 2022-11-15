@@ -7,4 +7,11 @@ public class IdentifierEqualsExpression implements Assignment {
     public IdentifierEqualsExpression(Expression expression) {
         this.expression = expression;
     }
+
+    @Override
+    public String toString() {
+        return "IdentifierEqualsExpression{" +
+                "expression=" + expression +
+                '}';
+    }
 }

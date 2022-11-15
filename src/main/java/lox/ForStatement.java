@@ -17,4 +17,13 @@ public class ForStatement implements Statement {
         this.statement = statement;
     }
 
+    @Override
+    public String toString() {
+        return "ForStatement{" +
+                "firstForInit=" + firstForInit +
+                ", optExpression1=" + optExpression1 +
+                ", optExpression2=" + optExpression2 +
+                ", statement=" + statement +
+                '}';
+    }
 }

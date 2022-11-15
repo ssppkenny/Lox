@@ -8,4 +8,10 @@ public class ExpressionVariableDeclaration implements OptionalVariableDeclaratio
         this.expression = expression;
     }
 
+    @Override
+    public String toString() {
+        return "ExpressionVariableDeclaration{" +
+                "expression=" + expression +
+                '}';
+    }
 }

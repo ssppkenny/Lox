@@ -12,4 +12,12 @@ public class Comparison {
         this.term = term;
         this.termElements = termElements;
     }
+
+    @Override
+    public String toString() {
+        return "Comparison{" +
+                "term=" + term +
+                ", termElements=" + termElements +
+                '}';
+    }
 }

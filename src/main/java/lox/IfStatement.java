@@ -12,4 +12,12 @@ public class IfStatement implements Statement {
         this.elsePart = elsePart;
     }
 
+    @Override
+    public String toString() {
+        return "IfStatement{" +
+                "expression=" + expression +
+                ", statement=" + statement +
+                ", elsePart=" + elsePart +
+                '}';
+    }
 }

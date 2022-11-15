@@ -7,4 +7,11 @@ public class Identifier {
     public Identifier(String identifier) {
         this.identifier = identifier;
     }
+
+    @Override
+    public String toString() {
+        return "Identifier{" +
+                "identifier='" + identifier + '\'' +
+                '}';
+    }
 }

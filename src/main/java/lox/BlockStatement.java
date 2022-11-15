@@ -9,4 +9,11 @@ public class BlockStatement implements Statement {
     public BlockStatement(List<Declaration> declarations) {
         this.declarations = declarations;
     }
+
+    @Override
+    public String toString() {
+        return "BlockStatement{" +
+                "declarations=" + declarations +
+                '}';
+    }
 }

@@ -24,4 +24,13 @@ public class Comparisons {
     public boolean isEmpty() {
         return comparisons.isEmpty();
     }
+
+    @Override
+    public String toString() {
+        return "Comparisons{" +
+                "comparisons=" + comparisons +
+                ", sign='" + sign + '\'' +
+                ", comparison=" + comparison +
+                '}';
+    }
 }

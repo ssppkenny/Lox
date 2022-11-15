@@ -8,4 +8,10 @@ public class FunctionDeclaration implements Declaration {
         this.declaration = declaration;
     }
 
+    @Override
+    public String toString() {
+        return "FunctionDeclaration{" +
+                "declaration=" + declaration +
+                '}';
+    }
 }

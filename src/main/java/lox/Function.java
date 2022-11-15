@@ -9,4 +9,12 @@ public class Function {
         this.parameters = parameters;
         this.block = block;
     }
+
+    @Override
+    public String toString() {
+        return "Function{" +
+                "parameters=" + parameters +
+                ", block=" + block +
+                '}';
+    }
 }

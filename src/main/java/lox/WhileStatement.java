@@ -10,4 +10,11 @@ public class WhileStatement implements Statement {
         this.statement = statement;
     }
 
+    @Override
+    public String toString() {
+        return "WhileStatement{" +
+                "expression=" + expression +
+                ", statement=" + statement +
+                '}';
+    }
 }

@@ -11,4 +11,12 @@ public class Equality {
         this.comparisons = comparisons;
         this.comparison = comparison;
     }
+
+    @Override
+    public String toString() {
+        return "Equality{" +
+                "comparison=" + comparison +
+                ", comparisons=" + comparisons +
+                '}';
+    }
 }

@@ -9,4 +9,11 @@ public class LogicOr implements Assignment {
     public LogicOr(List<LogicAnd> logicAnds) {
         this.logicAnds = logicAnds;
     }
+
+    @Override
+    public String toString() {
+        return "LogicOr{" +
+                "logicAnds=" + logicAnds +
+                '}';
+    }
 }

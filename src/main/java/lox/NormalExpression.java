@@ -8,4 +8,10 @@ public class NormalExpression implements OptExpression {
         this.expression = expression;
     }
 
+    @Override
+    public String toString() {
+        return "NormalExpression{" +
+                "expression=" + expression +
+                '}';
+    }
 }

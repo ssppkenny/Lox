@@ -8,4 +8,10 @@ public class PrintStatement implements Statement {
         this.expression = expression;
     }
 
+    @Override
+    public String toString() {
+        return "PrintStatement{" +
+                "expression=" + expression +
+                '}';
+    }
 }

@@ -11,4 +11,11 @@ public class VariableDeclaration implements Declaration {
         this.identifier = identifier;
     }
 
+    @Override
+    public String toString() {
+        return "VariableDeclaration{" +
+                "optionalVariableDeclaration=" + optionalVariableDeclaration +
+                ", identifier='" + identifier + '\'' +
+                '}';
+    }
 }

@@ -6,4 +6,11 @@ public class ReturnStatement implements Statement {
     public ReturnStatement(OptExpression optExpression) {
         this.optExpression = optExpression;
     }
+
+    @Override
+    public String toString() {
+        return "ReturnStatement{" +
+                "optExpression=" + optExpression +
+                '}';
+    }
 }

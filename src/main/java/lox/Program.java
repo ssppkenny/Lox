@@ -10,4 +10,10 @@ public class Program {
         this.declarations = declarations;
     }
 
+    @Override
+    public String toString() {
+        return "Program{" +
+                "declarations=" + declarations +
+                '}';
+    }
 }

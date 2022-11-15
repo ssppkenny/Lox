@@ -7,4 +7,11 @@ public class VarDeclForInit implements FirstForInit {
     public VarDeclForInit(VariableDeclaration variableDeclaration) {
         this.variableDeclaration = variableDeclaration;
     }
+
+    @Override
+    public String toString() {
+        return "VarDeclForInit{" +
+                "variableDeclaration=" + variableDeclaration +
+                '}';
+    }
 }
