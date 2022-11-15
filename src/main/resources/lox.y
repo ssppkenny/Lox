@@ -529,7 +529,7 @@ primary_block: LEFT_PAREN arguments_group RIGHT_PAREN
 	 {
 	    Parser.rule("DOT IDENTIFIER", $1, $2);
 	    String s = ((Tree)$2.obj).sym;
-	    new ParserVal(new PrimaryBlock.DotIdentifier(s));
+	    yyval = new ParserVal(new PrimaryBlock.DotIdentifier(s));
 
 	 }
 

@@ -3,18 +3,29 @@ package lox;
 public interface Primary {
 
     class True implements Primary {
-
+        public java.lang.String toString() {
+            return "true";
+        }
     }
 
     class False implements Primary {
+        public java.lang.String toString() {
+            return "false";
+        }
 
     }
 
     class Nil implements Primary {
+        public java.lang.String toString() {
+            return "null";
+        }
 
     }
 
     class This implements Primary {
+        public java.lang.String toString() {
+            return "this";
+        }
 
     }
 

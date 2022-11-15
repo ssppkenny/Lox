@@ -1378,7 +1378,7 @@ public class Parser {
                 {
                     Parser.rule("DOT IDENTIFIER", val_peek(1), val_peek(0));
                     String s = ((Tree) val_peek(0).obj).sym;
-                    new ParserVal(new PrimaryBlock.DotIdentifier(s));
+                    yyval = new ParserVal(new PrimaryBlock.DotIdentifier(s));
 
                 }
                 break;
