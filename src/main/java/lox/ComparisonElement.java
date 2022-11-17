@@ -17,4 +17,12 @@ public class ComparisonElement {
                 ", comparison=" + comparison +
                 '}';
     }
+
+    public String getComparisonSign() {
+        return comparisonSign;
+    }
+
+    public Comparison getComparison() {
+        return comparison;
+    }
 }

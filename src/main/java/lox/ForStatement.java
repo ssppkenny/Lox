@@ -1,5 +1,7 @@
 package lox;
 
+import java.util.Map;
+
 public class ForStatement implements Statement {
 
     private FirstForInit firstForInit;
@@ -25,5 +27,19 @@ public class ForStatement implements Statement {
                 ", optExpression2=" + optExpression2 +
                 ", statement=" + statement +
                 '}';
+    }
+
+    @Override
+    public Object eval(Map<String, Object> env) {
+        firstForInit.eval(env);
+        while (Utils.isTruthy(optExpression1.eval(env))) {
+            loop(env);
+            optExpression2.eval(env);
+        }
+        return null;
+    }
+
+    private Object loop(Map<String, Object> env) {
+        return statement.eval(env);
     }
 }

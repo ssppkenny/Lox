@@ -1,5 +1,7 @@
 package lox;
 
+import java.util.Map;
+
 public class WhileStatement implements Statement {
 
     private Expression expression;
@@ -16,5 +18,13 @@ public class WhileStatement implements Statement {
                 "expression=" + expression +
                 ", statement=" + statement +
                 '}';
+    }
+
+    @Override
+    public Object eval(Map<String, Object> env) {
+        while (Utils.isTruthy(expression.eval(env))) {
+            statement.eval(env);
+        }
+        return null;
     }
 }

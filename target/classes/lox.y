@@ -282,7 +282,8 @@ expression: assignment
 assignment: IDENTIFIER EQUALS expression
 	 {
 	    Parser.rule("assignment: IDENTIFIER EQUALS expression", $1, $2, $3);
-	    yyval = new ParserVal(new IdentifierEqualsExpression((Expression)$3.obj));
+	    Strig identifier = ((Tree)$1.obj).sym;
+	    yyval = new ParserVal(new IdentifierEqualsExpression(identifier, (Expression)$3.obj));
 	 }
 	| call EQUALS expression
 	 {
@@ -388,7 +389,8 @@ terms: {
 	    List<TermElement> terms = (List)$1.obj;
 	    String sign = ((Tree)$2.obj).sym;
 	    Term term = (Term)$3.obj;
-	    yyval = new ParserVal(new TermElement(sign, term));
+	    terms.add(new TermElement(sign, term));
+	    yyval = new ParserVal(terms);
 	 }
 
 term_sign: GREATER
@@ -441,10 +443,10 @@ unaries: /* empty */ {
 	    yyval = new ParserVal(unaries);
 	 }
 
-unary: bang_or_minus factor
+unary: bang_or_minus unary
 	 {
 	    Parser.rule("unary: bang_or_minus factor", $1, $2);
-	    yyval = new ParserVal(new BangOrMinusFactor(((Tree)$1.obj).sym, (Factor)$2.obj));
+	    yyval = new ParserVal(new BangOrMinusUnary(((Tree)$1.obj).sym, (Unary)$2.obj));
 	 }
 	| call
 	 {
@@ -577,7 +579,8 @@ primary: TRUE
 	 {
 	    Parser.rule("STRING", $1);
 	    String s = ((Tree)$1.obj).sym;
-	    yyval = new ParserVal(new Primary.String(s));
+	    int len = s.length();
+	    yyval = new ParserVal(new Primary.String(s,substring(1,len-1)));
 	 }
 	| IDENTIFIER
 	 {

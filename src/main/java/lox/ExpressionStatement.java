@@ -1,5 +1,7 @@
 package lox;
 
+import java.util.Map;
+
 public class ExpressionStatement implements Statement {
 
     private Expression expression;
@@ -13,5 +15,10 @@ public class ExpressionStatement implements Statement {
         return "ExpressionStatement{" +
                 "expression=" + expression +
                 '}';
+    }
+
+    @Override
+    public Object eval(Map<String, Object> env) {
+        return expression.eval(env);
     }
 }

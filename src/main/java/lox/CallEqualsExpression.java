@@ -1,5 +1,7 @@
 package lox;
 
+import java.util.Map;
+
 public class CallEqualsExpression implements Assignment {
 
     private Expression expression;
@@ -13,5 +15,10 @@ public class CallEqualsExpression implements Assignment {
         return "CallEqualsExpression{" +
                 "expression=" + expression +
                 '}';
+    }
+
+    @Override
+    public Object eval(Map<String, Object> env) {
+        return null;
     }
 }

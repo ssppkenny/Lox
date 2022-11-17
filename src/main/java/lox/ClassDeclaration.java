@@ -1,6 +1,7 @@
 package lox;
 
 import java.util.List;
+import java.util.Map;
 
 public class ClassDeclaration implements Declaration {
 
@@ -15,6 +16,11 @@ public class ClassDeclaration implements Declaration {
         this.optionalParentDeclaration = optionalParentDeclaration;
         this.functions = functions;
 
+    }
+
+    @Override
+    public Object eval(Map<String, Object> env) {
+        return null;
     }
 
     @Override

@@ -1,5 +1,7 @@
 package lox;
 
+import java.util.Map;
+
 public class ExpressionVariableDeclaration implements OptionalVariableDeclaration {
 
     private final Expression expression;
@@ -13,5 +15,10 @@ public class ExpressionVariableDeclaration implements OptionalVariableDeclaratio
         return "ExpressionVariableDeclaration{" +
                 "expression=" + expression +
                 '}';
+    }
+
+    @Override
+    public Object eval(Map<String, Object> env) {
+        return expression.eval(env);
     }
 }

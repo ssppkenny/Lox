@@ -18,4 +18,12 @@ public class TermElement {
                 ", term=" + term +
                 '}';
     }
+
+    public String getSign() {
+        return sign;
+    }
+
+    public Term getTerm() {
+        return term;
+    }
 }

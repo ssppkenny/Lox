@@ -1,5 +1,7 @@
 package lox;
 
+import java.util.Map;
+
 public class UnaryCall implements Unary {
 
     private Call call;
@@ -13,5 +15,11 @@ public class UnaryCall implements Unary {
         return "UnaryCall{" +
                 "call=" + call +
                 '}';
+    }
+
+
+    @Override
+    public Object eval(Map<String, Object> env) {
+        return call.eval(env);
     }
 }

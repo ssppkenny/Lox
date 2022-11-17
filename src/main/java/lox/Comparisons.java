@@ -2,6 +2,7 @@ package lox;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Comparisons {
 
@@ -32,5 +33,17 @@ public class Comparisons {
                 ", sign='" + sign + '\'' +
                 ", comparison=" + comparison +
                 '}';
+    }
+
+    public Object eval(Map<String, Object> env) {
+        if (comparisons.isEmpty()) {
+            return comparison.eval(env);
+        }
+
+        Boolean v = Boolean.TRUE;
+        for (Comparisons elt : comparisons) {
+
+        }
+        return Boolean.TRUE;
     }
 }

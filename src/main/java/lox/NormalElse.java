@@ -1,5 +1,7 @@
 package lox;
 
+import java.util.Map;
+
 public class NormalElse implements Else {
 
     private Statement statement;
@@ -13,5 +15,10 @@ public class NormalElse implements Else {
         return "NormalElse{" +
                 "statement=" + statement +
                 '}';
+    }
+
+    @Override
+    public Object eval(Map<String, Object> env) {
+        return statement.eval(env);
     }
 }

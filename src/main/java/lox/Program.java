@@ -16,4 +16,8 @@ public class Program {
                 "declarations=" + declarations +
                 '}';
     }
+
+    public List<Declaration> getDeclarations() {
+        return declarations;
+    }
 }

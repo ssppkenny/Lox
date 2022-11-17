@@ -18,4 +18,12 @@ public class FactorElement {
                 ", factor=" + factor +
                 '}';
     }
+
+    public String getSign() {
+        return sign;
+    }
+
+    public Factor getFactor() {
+        return factor;
+    }
 }

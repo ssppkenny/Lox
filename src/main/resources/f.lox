@@ -1,9 +1,10 @@
-class A {
-    f(x) {
-        return x + 1;
-    }
+for (var i=1; i<5; i=i+1) {
+    print i;
 }
 
-a = A();
-b = a.f(5);
-print b;
+a = 5;
+
+while (a > 0) {
+    a = a - 1;
+    print a;
+}

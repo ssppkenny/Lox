@@ -1,5 +1,7 @@
 package lox;
 
+import java.util.Map;
+
 public class IfStatement implements Statement {
 
     private Expression expression;
@@ -19,5 +21,15 @@ public class IfStatement implements Statement {
                 ", statement=" + statement +
                 ", elsePart=" + elsePart +
                 '}';
+    }
+
+    @Override
+    public Object eval(Map<String, Object> env) {
+        Boolean b = Utils.isTruthy(expression.eval(env));
+        if (b) {
+            return statement.eval(env);
+        } else {
+            return elsePart.eval(env);
+        }
     }
 }

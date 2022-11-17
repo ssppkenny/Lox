@@ -1,5 +1,7 @@
 package lox;
 
-public interface OptionalVariableDeclaration extends Declaration {
+import java.util.Map;
 
+public interface OptionalVariableDeclaration extends Declaration {
+    public Object eval(Map<String, Object> env);
 }

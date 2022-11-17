@@ -1,5 +1,7 @@
 package lox;
 
+import java.util.Map;
+
 public class FunctionDeclaration implements Declaration {
 
     private final Object declaration;
@@ -13,5 +15,10 @@ public class FunctionDeclaration implements Declaration {
         return "FunctionDeclaration{" +
                 "declaration=" + declaration +
                 '}';
+    }
+
+    @Override
+    public Object eval(Map<String, Object> env) {
+        return null;
     }
 }

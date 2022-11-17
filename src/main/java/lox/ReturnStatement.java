@@ -1,5 +1,7 @@
 package lox;
 
+import java.util.Map;
+
 public class ReturnStatement implements Statement {
     private OptExpression optExpression;
 
@@ -12,5 +14,10 @@ public class ReturnStatement implements Statement {
         return "ReturnStatement{" +
                 "optExpression=" + optExpression +
                 '}';
+    }
+
+    @Override
+    public Object eval(Map<String, Object> env) {
+        return null;
     }
 }

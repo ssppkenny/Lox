@@ -1,5 +1,7 @@
 package lox;
 
+import java.util.Map;
+
 public class PrintStatement implements Statement {
 
     private Expression expression;
@@ -13,5 +15,11 @@ public class PrintStatement implements Statement {
         return "PrintStatement{" +
                 "expression=" + expression +
                 '}';
+    }
+
+    @Override
+    public Object eval(Map<String, Object> env) {
+        System.out.println(expression.eval(env));
+        return null;
     }
 }

@@ -1,6 +1,7 @@
 package lox;
 
 import java.util.List;
+import java.util.Map;
 
 public class BlockStatement implements Statement {
 
@@ -15,5 +16,13 @@ public class BlockStatement implements Statement {
         return "BlockStatement{" +
                 "declarations=" + declarations +
                 '}';
+    }
+
+    @Override
+    public Object eval(Map<String, Object> env) {
+        for (Declaration declaration : declarations) {
+            declaration.eval(env);
+        }
+        return null;
     }
 }

@@ -1,6 +1,7 @@
 package lox;
 
 import java.util.List;
+import java.util.Map;
 
 public class Factor {
 
@@ -19,5 +20,27 @@ public class Factor {
                 "unary=" + unary +
                 ", unaries=" + unaries +
                 '}';
+    }
+
+    public Object eval(Map<String, Object> env) {
+        Object d = unary.eval(env);
+
+        for (UnaryElement elt : unaries) {
+            String sign = elt.getSign();
+            switch (sign) {
+                case "/":
+                    Double d1 = (Double) elt.getUnary().eval(env);
+                    d = (Double) d / d1;
+                    break;
+                case "*":
+                    Double d2 = (Double) elt.getUnary().eval(env);
+                    d = (Double) d * d2;
+                    break;
+                default:
+                    break;
+
+            }
+        }
+        return d;
     }
 }

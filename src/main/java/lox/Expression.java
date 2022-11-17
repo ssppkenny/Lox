@@ -1,5 +1,7 @@
 package lox;
 
+import java.util.Map;
+
 public class Expression {
 
     private Assignment assignment;
@@ -14,5 +16,9 @@ public class Expression {
         return "Expression{" +
                 "assignment=" + assignment +
                 '}';
+    }
+
+    public Object eval(Map<String, Object> env) {
+        return assignment.eval(env);
     }
 }

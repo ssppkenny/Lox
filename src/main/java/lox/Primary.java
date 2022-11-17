@@ -1,10 +1,19 @@
 package lox;
 
+import java.util.Map;
+
 public interface Primary {
+
+    Object eval(Map<java.lang.String, Object> env);
 
     class True implements Primary {
         public java.lang.String toString() {
             return "true";
+        }
+
+        @Override
+        public Object eval(Map<java.lang.String, Object> env) {
+            return Boolean.TRUE;
         }
     }
 
@@ -13,6 +22,10 @@ public interface Primary {
             return "false";
         }
 
+        @Override
+        public Object eval(Map<java.lang.String, Object> env) {
+            return Boolean.FALSE;
+        }
     }
 
     class Nil implements Primary {
@@ -20,6 +33,10 @@ public interface Primary {
             return "null";
         }
 
+        @Override
+        public Object eval(Map<java.lang.String, Object> env) {
+            return null;
+        }
     }
 
     class This implements Primary {
@@ -27,6 +44,10 @@ public interface Primary {
             return "this";
         }
 
+        @Override
+        public Object eval(Map<java.lang.String, Object> env) {
+            return null;
+        }
     }
 
     class Number implements Primary {
@@ -41,6 +62,11 @@ public interface Primary {
             return "Number{" +
                     "d=" + d +
                     '}';
+        }
+
+        @Override
+        public Object eval(Map<java.lang.String, Object> env) {
+            return d;
         }
     }
 
@@ -58,6 +84,11 @@ public interface Primary {
                     "s='" + s + '\'' +
                     '}';
         }
+
+        @Override
+        public Object eval(Map<java.lang.String, Object> env) {
+            return s;
+        }
     }
 
     class Identifier implements Primary {
@@ -72,6 +103,11 @@ public interface Primary {
             return "Identifier{" +
                     "identifier='" + identifier + '\'' +
                     '}';
+        }
+
+        @Override
+        public Object eval(Map<java.lang.String, Object> env) {
+            return env.get(identifier);
         }
     }
 
@@ -88,6 +124,11 @@ public interface Primary {
                     "expression=" + expression +
                     '}';
         }
+
+        @Override
+        public Object eval(Map<java.lang.String, Object> env) {
+            return expression.eval(env);
+        }
     }
 
     class SuperIdentifier implements Primary {
@@ -102,6 +143,11 @@ public interface Primary {
             return "SuperIdentifier{" +
                     "identifier='" + identifier + '\'' +
                     '}';
+        }
+
+        @Override
+        public Object eval(Map<java.lang.String, Object> env) {
+            return identifier;
         }
     }
 

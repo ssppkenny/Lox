@@ -1,6 +1,7 @@
 package lox;
 
 import java.util.List;
+import java.util.Map;
 
 public class Call {
 
@@ -18,5 +19,9 @@ public class Call {
                 "primary=" + primary +
                 ", primaryBlock=" + primaryBlock +
                 '}';
+    }
+
+    public Object eval(Map<String, Object> env) {
+        return primary.eval(env);
     }
 }

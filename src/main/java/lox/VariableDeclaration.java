@@ -1,5 +1,7 @@
 package lox;
 
+import java.util.Map;
+
 public class VariableDeclaration implements Declaration {
 
     private OptionalVariableDeclaration optionalVariableDeclaration;
@@ -17,5 +19,11 @@ public class VariableDeclaration implements Declaration {
                 "optionalVariableDeclaration=" + optionalVariableDeclaration +
                 ", identifier='" + identifier + '\'' +
                 '}';
+    }
+
+    public Object eval(Map<String, Object> env) {
+        Object value = optionalVariableDeclaration.eval(env);
+        env.put(identifier, value);
+        return value;
     }
 }

@@ -18,4 +18,12 @@ public class UnaryElement {
                 ", unary=" + unary +
                 '}';
     }
+
+    public String getSign() {
+        return sign;
+    }
+
+    public Unary getUnary() {
+        return unary;
+    }
 }

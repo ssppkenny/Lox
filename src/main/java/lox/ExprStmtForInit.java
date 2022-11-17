@@ -1,5 +1,7 @@
 package lox;
 
+import java.util.Map;
+
 public class ExprStmtForInit implements FirstForInit {
 
     private ExpressionStatement expressionStatement;
@@ -13,5 +15,10 @@ public class ExprStmtForInit implements FirstForInit {
         return "ExprStmtForInit{" +
                 "expressionStatement=" + expressionStatement +
                 '}';
+    }
+
+    @Override
+    public Object eval(Map<String, Object> env) {
+        return expressionStatement.eval(env);
     }
 }
