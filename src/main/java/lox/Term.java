@@ -29,12 +29,24 @@ public class Term {
             String sign = elt.getSign();
             switch (sign) {
                 case "-":
-                    Double d1 = (Double) elt.getFactor().eval(env);
-                    d = (Double) d - d1;
+                    Object d1 = elt.getFactor().eval(env);
+                    d = (Double) d - (Double) d1;
                     break;
                 case "+":
-                    Double d2 = (Double) elt.getFactor().eval(env);
-                    d = (Double) d + d2;
+                    Object d2 = elt.getFactor().eval(env);
+                    if (d instanceof String) {
+                        if (d2 instanceof String) {
+                            d = d + (String) d2;
+                        } else {
+                            d = d + d2.toString();
+                        }
+                    } else {
+                        if (d2 instanceof String) {
+                            d = d + (String) d2;
+                        } else {
+                            d = d + d2.toString();
+                        }
+                    }
                     break;
                 default:
                     break;

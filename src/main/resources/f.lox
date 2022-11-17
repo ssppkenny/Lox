@@ -1,10 +1,5 @@
-for (var i=1; i<5; i=i+1) {
-    print i;
-}
+var a = "AAA" + "test";
+print a;
 
-a = 5;
-
-while (a > 0) {
-    a = a - 1;
-    print a;
-}
+var b = a + 1;
+print b;

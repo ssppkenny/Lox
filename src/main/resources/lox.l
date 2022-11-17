@@ -11,10 +11,9 @@
     }
 
     public int scan(int cat) {
-        Tree t1 = new Tree("t", 0, (Tree) null);
-       Tree t = new Tree("token", 0, t1);
-       yyparser.yylval = new ParserVal(t);
-       return cat;
+        Tree t1 = new Tree(yytext(), (Tree) null);
+        yyparser.yylval = new ParserVal(t1);
+        return cat;
     }
 %}
 %%
@@ -54,7 +53,7 @@
 "var"    {return  scan(Parser.VAR); }
 "while"  {return  scan(Parser.WHILE); }
 [a-zA-Z_][a-zA-Z0-9_]*   {return  scan(Parser.IDENTIFIER); }
-\".*\"  { return scan(Parser.STRING); }
+\"[^\"]*\"  { return scan(Parser.STRING); }
 [0-9]+(\.\d+)?  { return scan(Parser.NUMBER); }
 [ \t\r]+ { }
 \n      { Lexer.incrementLineNumber(); }
