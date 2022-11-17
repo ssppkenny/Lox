@@ -44,7 +44,7 @@ public class Term {
                         if (d2 instanceof String) {
                             d = d + (String) d2;
                         } else {
-                            d = d + d2.toString();
+                            d = (Double) d + (Double) d2;
                         }
                     }
                     break;

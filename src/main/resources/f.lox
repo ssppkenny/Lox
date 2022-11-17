@@ -1,5 +1,4 @@
-var a = "AAA" + "test";
-print a;
-
-var b = a + 1;
-print b;
+for (var i=0;i<5; i=i+1) {
+    i=i+1;
+    print i;
+}
