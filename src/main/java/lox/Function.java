@@ -1,11 +1,18 @@
 package lox;
 
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class Function {
 
-    private Object parameters;
-    private Object block;
+    private String identifier;
 
-    public Function(Object parameters, Object block) {
+    private Parameters parameters;
+    private BlockStatement block;
+
+    public Function(String identifier, Parameters parameters, BlockStatement block) {
+        this.identifier = identifier;
         this.parameters = parameters;
         this.block = block;
     }
@@ -13,8 +20,33 @@ public class Function {
     @Override
     public String toString() {
         return "Function{" +
-                "parameters=" + parameters +
+                "identifier='" + identifier + '\'' +
+                ", parameters=" + parameters +
                 ", block=" + block +
                 '}';
+    }
+
+    public String getIdentifier() {
+        return identifier;
+    }
+
+    public Parameters getParameters() {
+        return parameters;
+    }
+
+    public BlockStatement getBlock() {
+        return block;
+    }
+
+    public Object eval(Map<String, Object> env, Map<String, Object> fargs) {
+        Map<String, Object> newEnv = new HashMap<>();
+        for (String key : env.keySet()) {
+            newEnv.put(key, env.get(key));
+        }
+        for (String key : fargs.keySet()) {
+            newEnv.put(key, fargs.get(key));
+        }
+
+        return block.eval(newEnv);
     }
 }

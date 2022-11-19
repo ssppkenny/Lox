@@ -18,6 +18,6 @@ public class ReturnStatement implements Statement {
 
     @Override
     public Object eval(Map<String, Object> env) {
-        return null;
+        return optExpression.eval(env);
     }
 }

@@ -1,5 +1,7 @@
 package lox;
 
+import java.util.Map;
+
 public class Identifier {
 
     private final String identifier;
@@ -13,5 +15,13 @@ public class Identifier {
         return "Identifier{" +
                 "identifier='" + identifier + '\'' +
                 '}';
+    }
+
+    public String getName() {
+        return identifier;
+    }
+
+    public Object eval(Map<String, Object> env) {
+        return env.get(identifier);
     }
 }

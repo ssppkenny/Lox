@@ -14,67 +14,13 @@
 
 //#line 2 "lox.y"
 
+import lox.*;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import lox.Assignment;
-import lox.BangOrMinusUnary;
-import lox.BlockStatement;
-import lox.Call;
-import lox.CallEqualsExpression;
-import lox.ClassDeclaration;
-import lox.Comparison;
-import lox.ComparisonElement;
-import lox.Declaration;
-import lox.Else;
-import lox.EmptyElse;
-import lox.EmptyExpression;
-import lox.EmptyForInit;
-import lox.EmptyParentDeclaration;
-import lox.EmptyVariableDeclaration;
-import lox.Equality;
-import lox.ExprStmtForInit;
-import lox.Expression;
-import lox.ExpressionStatement;
-import lox.ExpressionVariableDeclaration;
-import lox.Factor;
-import lox.FactorElement;
-import lox.FirstForInit;
-import lox.ForStatement;
-import lox.Function;
-import lox.FunctionDeclaration;
-import lox.Identifier;
-import lox.IdentifierEqualsExpression;
-import lox.IfStatement;
-import lox.LogicAnd;
-import lox.LogicOr;
-import lox.NormalElse;
-import lox.NormalExpression;
-import lox.OptExpression;
-import lox.OptionalParentDeclaration;
-import lox.OptionalVariableDeclaration;
-import lox.Parameters;
-import lox.ParentDeclaration;
-import lox.Primary;
-import lox.PrimaryBlock;
-import lox.PrintStatement;
-import lox.Program;
-import lox.ReturnStatement;
-import lox.Statement;
-import lox.Term;
-import lox.TermElement;
-import lox.Unary;
-import lox.UnaryCall;
-import lox.UnaryElement;
-import lox.VarDeclForInit;
-import lox.VariableDeclaration;
-import lox.WhileStatement;
+import java.io.StringReader;
+import java.util.*;
 //#line 24 "Parser.java"
 
 
@@ -571,7 +517,7 @@ public class Parser {
 
     private Yylex lexer;
 
-    private static Logger logger = LoggerFactory.getLogger(Parser.class);
+//    private static Logger logger = LoggerFactory.getLogger(Parser.class);
 
     private int yylex() {
         try {
@@ -601,9 +547,9 @@ public class Parser {
         for (ParserVal pv : pvs) {
             b.append(pv).append(";");
         }
-        if (logger.isDebugEnabled()) {
-            logger.info(b.toString());
-        }
+//        if (logger.isDebugEnabled()) {
+//            logger.info(b.toString());
+//        }
     }
 
     public static void main(String args[]) throws IOException {
@@ -612,16 +558,30 @@ public class Parser {
         if (args.length > 0) {
             // parse a file
             yyparser = new Parser(new FileReader(args[0]));
+            yyparser.yyparse();
+            int pos = yyparser.stateptr;
+            Program program = (Program) yyparser.valstk[pos].obj;
+            Map<String, Object> env = new HashMap<>();
+            List<Declaration> declarations = program.getDeclarations();
+            for (Declaration declaration : declarations) {
+                declaration.eval(env);
+            }
+        } else {
+            Map<String, Object> env = new HashMap<>();
+            Scanner scanner = new Scanner(System.in);
+            while (scanner.hasNextLine()) {
+                String next = scanner.nextLine();
+                yyparser = new Parser(new StringReader(next));
+                yyparser.yyparse();
+                int pos = yyparser.stateptr;
+                Program program = (Program) yyparser.valstk[pos].obj;
+                for (Declaration declaration : program.getDeclarations()) {
+                    declaration.eval(env);
+                }
+            }
+
         }
 
-        yyparser.yyparse();
-        int pos = yyparser.stateptr;
-        Program program = (Program) yyparser.valstk[pos].obj;
-        Map<String, Object> env = new HashMap<>();
-        List<Declaration> declarations = program.getDeclarations();
-        for (Declaration declaration : declarations) {
-            declaration.eval(env);
-        }
 
     }
 
@@ -863,14 +823,16 @@ public class Parser {
 //#line 98 "lox.y"
                 {
                     Parser.rule("funDecl: FUN function", val_peek(1), val_peek(0));
-                    yyval = new ParserVal(new FunctionDeclaration(val_peek(0).obj));
+                    Function f = (Function) val_peek(0).obj;
+                    yyval = new ParserVal(new FunctionDeclaration(f));
                 }
                 break;
                 case 14:
 //#line 104 "lox.y"
                 {
                     Parser.rule("function: IDENTIFIER LEFT_PAREN parameters RIGHT_PAREN block", val_peek(4), val_peek(3), val_peek(2), val_peek(1), val_peek(0));
-                    yyval = new ParserVal(new Function(val_peek(2).obj, val_peek(0).obj));
+                    Parameters parameters = new Parameters((List) val_peek(2).obj);
+                    yyval = new ParserVal(new Function(((Tree) val_peek(4).obj).sym, parameters, (BlockStatement) val_peek(0).obj));
                 }
                 break;
                 case 15:

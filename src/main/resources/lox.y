@@ -97,13 +97,16 @@ functions: {
 funDecl: FUN function
 	 {
 	    Parser.rule("funDecl: FUN function", $1, $2);
-	    yyval = new ParserVal(new FunctionDeclaration($2.obj));
+	    Function f = (Function)$2.obj;
+	    yyval = new ParserVal(new FunctionDeclaration(f));
 	 }
 
 function: IDENTIFIER LEFT_PAREN parameters RIGHT_PAREN block
 	 {
 	    Parser.rule("function: IDENTIFIER LEFT_PAREN parameters RIGHT_PAREN block", $1,$2,$3,$4,$5);
-	    yyval = new ParserVal(new Function($3.obj, $5.obj));
+	    String identifier = ((Tree)$1.obj).sym;
+	    Parameters params = new Parameters((List)$3.obj);
+	    yyval = new ParserVal(new Function(identifier, params, (BlockStatement)$5.obj));
 	 }
 
 parameters: {

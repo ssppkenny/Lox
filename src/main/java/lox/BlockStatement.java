@@ -20,9 +20,12 @@ public class BlockStatement implements Statement {
 
     @Override
     public Object eval(Map<String, Object> env) {
+        Object retVal = null;
         for (Declaration declaration : declarations) {
-            declaration.eval(env);
+            retVal = declaration.eval(env);
         }
-        return null;
+        return retVal;
     }
+
+
 }

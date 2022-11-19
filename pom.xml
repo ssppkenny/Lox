@@ -27,5 +27,25 @@
 </dependency>
 
     </dependencies>
-    
+ <build>
+        <plugins>
+            <plugin>
+                <groupId>org.graalvm.nativeimage</groupId>
+                <artifactId>native-image-maven-plugin</artifactId>
+                <version>21.2.0</version>
+                <configuration>
+                    <mainClass>Parser</mainClass>
+                    <imageName>lox</imageName>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>native-image</goal>
+                        </goals>
+                        <phase>package</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>   
 </project>

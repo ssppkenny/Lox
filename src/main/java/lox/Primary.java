@@ -105,6 +105,10 @@ public interface Primary {
                     '}';
         }
 
+        public java.lang.String getIdentifier() {
+            return identifier;
+        }
+
         @Override
         public Object eval(Map<java.lang.String, Object> env) {
             return env.get(identifier);
