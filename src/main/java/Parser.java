@@ -568,6 +568,8 @@ public class Parser {
             }
         } else {
             Map<String, Object> env = new HashMap<>();
+            System.out.println("Lox 0.0.1");
+            System.out.print(">> ");
             Scanner scanner = new Scanner(System.in);
             while (scanner.hasNextLine()) {
                 String next = scanner.nextLine();
@@ -577,6 +579,7 @@ public class Parser {
                 Program program = (Program) yyparser.valstk[pos].obj;
                 for (Declaration declaration : program.getDeclarations()) {
                     declaration.eval(env);
+                    System.out.print(">> ");
                 }
             }
 
