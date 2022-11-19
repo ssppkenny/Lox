@@ -573,18 +573,22 @@ public class Parser {
             Scanner scanner = new Scanner(System.in);
             while (scanner.hasNextLine()) {
                 String next = scanner.nextLine();
-                yyparser = new Parser(new StringReader(next));
-                yyparser.yyparse();
-                int pos = yyparser.stateptr;
-                Program program = (Program) yyparser.valstk[pos].obj;
-                for (Declaration declaration : program.getDeclarations()) {
-                    if (declaration instanceof ExpressionStatement) {
-                        ExpressionStatement stmt = (ExpressionStatement) declaration;
-                        Expression expression = stmt.getExpression();
-                        new PrintStatement(expression).eval(env);
-                    } else {
-                        declaration.eval(env);
+                try {
+                    yyparser = new Parser(new StringReader(next));
+                    yyparser.yyparse();
+                    int pos = yyparser.stateptr;
+                    Program program = (Program) yyparser.valstk[pos].obj;
+                    for (Declaration declaration : program.getDeclarations()) {
+                        if (declaration instanceof ExpressionStatement) {
+                            ExpressionStatement stmt = (ExpressionStatement) declaration;
+                            Expression expression = stmt.getExpression();
+                            new PrintStatement(expression).eval(env);
+                        } else {
+                            declaration.eval(env);
+                        }
+                        System.out.print(">> ");
                     }
+                } catch (Exception e) {
                     System.out.print(">> ");
                 }
             }
