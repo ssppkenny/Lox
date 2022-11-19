@@ -17,6 +17,10 @@ public class ExpressionStatement implements Statement {
                 '}';
     }
 
+    public Expression getExpression() {
+        return expression;
+    }
+
     @Override
     public Object eval(Map<String, Object> env) {
         return expression.eval(env);

@@ -578,7 +578,13 @@ public class Parser {
                 int pos = yyparser.stateptr;
                 Program program = (Program) yyparser.valstk[pos].obj;
                 for (Declaration declaration : program.getDeclarations()) {
-                    declaration.eval(env);
+                    if (declaration instanceof ExpressionStatement) {
+                        ExpressionStatement stmt = (ExpressionStatement) declaration;
+                        Expression expression = stmt.getExpression();
+                        new PrintStatement(expression).eval(env);
+                    } else {
+                        declaration.eval(env);
+                    }
                     System.out.print(">> ");
                 }
             }
