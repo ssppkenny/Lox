@@ -100,9 +100,7 @@ public interface Primary {
 
         @Override
         public java.lang.String toString() {
-            return "Identifier{" +
-                    "identifier='" + identifier + '\'' +
-                    '}';
+            return identifier;
         }
 
         public java.lang.String getIdentifier() {

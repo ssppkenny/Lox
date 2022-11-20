@@ -112,7 +112,7 @@ function: IDENTIFIER LEFT_PAREN parameters RIGHT_PAREN block
 parameters: {
 	Parser.rule("parameters: empty");
 	List<Identifier> identifiers = new ArrayList<>();
-	yyval = new ParserVal(new Parameters(identifiers));
+	yyval = new ParserVal(identifiers);
 }
 	| IDENTIFIER optIdentifiers
 	 {
@@ -291,7 +291,7 @@ assignment: IDENTIFIER EQUALS expression
 	| call EQUALS expression
 	 {
 	    Parser.rule("assignment: call EQUALS expression", $1, $2, $3);
-	    yyval = new ParserVal(new CallEqualsExpression((Expression)$3.obj));
+	    yyval = new ParserVal(new CallEqualsExpression((Call)$1.obj, (Expression)$3.obj));
 	 }
 	| logic_or
 	 {

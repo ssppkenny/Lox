@@ -30,7 +30,7 @@ public interface PrimaryBlock {
     }
 
     class DotIdentifier implements PrimaryBlock {
-        private final String identifier;
+        private final java.lang.String identifier;
 
         public DotIdentifier(String identifier) {
             this.identifier = identifier;
@@ -38,9 +38,11 @@ public interface PrimaryBlock {
 
         @Override
         public String toString() {
-            return "DotIdentifier{" +
-                    "identifier='" + identifier + '\'' +
-                    '}';
+            return identifier;
+        }
+
+        public String getIdentifier() {
+            return identifier;
         }
 
         @Override

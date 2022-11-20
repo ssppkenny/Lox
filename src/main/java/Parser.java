@@ -853,7 +853,7 @@ public class Parser {
                 {
                     Parser.rule("parameters: empty");
                     List<Identifier> identifiers = new ArrayList<>();
-                    yyval = new ParserVal(new Parameters(identifiers));
+                    yyval = new ParserVal(identifiers);
                 }
                 break;
                 case 16:
@@ -1091,7 +1091,7 @@ public class Parser {
 //#line 288 "lox.y"
                 {
                     Parser.rule("assignment: call EQUALS expression", val_peek(2), val_peek(1), val_peek(0));
-                    yyval = new ParserVal(new CallEqualsExpression((Expression) val_peek(0).obj));
+                    yyval = new ParserVal(new CallEqualsExpression((Call) val_peek(2).obj, (Expression) val_peek(0).obj));
                 }
                 break;
                 case 47:

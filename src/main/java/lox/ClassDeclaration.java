@@ -1,7 +1,9 @@
 package lox;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 
 public class ClassDeclaration implements Declaration {
 
@@ -20,6 +22,12 @@ public class ClassDeclaration implements Declaration {
 
     @Override
     public Object eval(Map<String, Object> env) {
+        List<Declaration> declarations = new ArrayList<>();
+        Function init = functions.stream().filter(function -> function.getIdentifier().equals("init")).findFirst().orElse(null);
+        Parameters params = init == null ? new Parameters(new ArrayList<>()) : init.getParameters();
+        declarations.add(new ClassBodyExpressionStatement(identifier, functions));
+        Function constructor = new Function(identifier, params, new BlockStatement(declarations));
+        env.put("function:" + identifier, constructor);
         return null;
     }
 

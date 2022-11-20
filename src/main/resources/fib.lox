@@ -6,5 +6,7 @@ fun fib(n) {
     }
 }
 
-var a = fib(5);
-print a;
+for (var i=1; i<10; i=i+1) {
+    var a = fib(i);
+    print a;
+}

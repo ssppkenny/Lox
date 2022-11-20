@@ -1,0 +1,17 @@
+class Breakfast {
+  init(bread, meat) {
+    this.bread = bread;
+    this.meat = meat;
+  }
+
+  serve(who) {
+    print who + " " + this.meat + " " + this.bread;
+  }
+}
+
+for (var i=0; i<5; i=i+1) {
+    var br = "b" + i;
+    var me = "m" + i;
+    var b = Breakfast(br, me);
+    b.serve("gggg");
+}
