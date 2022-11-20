@@ -9,9 +9,12 @@ class Breakfast {
   }
 }
 
+
 for (var i=0; i<5; i=i+1) {
     var br = "b" + i;
     var me = "m" + i;
     var b = Breakfast(br, me);
-    b.serve("gggg");
+    b.serve("gg ");
 }
+
+print meat;

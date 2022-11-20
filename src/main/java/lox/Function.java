@@ -47,8 +47,6 @@ public class Function {
             newEnv.put(key, fargs.get(key));
         }
 
-        env.putAll(newEnv);
-
-        return block.eval(env);
+        return block.eval(newEnv);
     }
 }
