@@ -21,7 +21,11 @@ public class ClassObject {
 
     public Object callFunction(String functionName, Map<String, Object> fArgs) {
         Function function = findFunction(functionName);
-        return function.eval(env, fArgs);
+        String methodName = className + "_" + functionName;
+        Function function1 = new Function(methodName, function.getParameters(), function.getBlock());
+        fArgs.put("function:" + methodName, function1);
+        fArgs.put("this", this);
+        return function1.eval(env, fArgs);
     }
 
     public Function getFunction(String functionName) {
@@ -41,5 +45,9 @@ public class ClassObject {
 
     public Object getProperty(String name) {
         return env.get(name);
+    }
+
+    public String getClassName() {
+        return className;
     }
 }

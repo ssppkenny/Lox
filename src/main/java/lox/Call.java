@@ -40,24 +40,18 @@ public class Call {
                 List<Object> paramValues = (List) ag.eval(env);
                 String fName = ((Primary.Identifier) primary).getIdentifier();
                 Function f = (Function) env.get("function:" + fName);
+                if (f == null && env.get("this") != null) {
+                    ClassObject object = (ClassObject) env.get("this");
+                    f = object.getFunction(fName);
+                }
                 List<String> parameterNames = f.getParameters().getParameterNames();
                 Map<String, Object> fArgs = new HashMap<>();
                 for (int i = 0; i < parameterNames.size(); i++) {
                     fArgs.put(parameterNames.get(i), paramValues.get(i));
                 }
 
-                Object o = FunctionCache.get(fName, paramValues);
-                if (o == null || (o instanceof ClassObject)) {
-                    try {
-                        Object retVal = f.eval(env, fArgs);
-                        FunctionCache.put(fName, paramValues, retVal);
-                        return retVal;
-                    } catch (StackOverflowError e) {
-                        throw new RuntimeException("StackOverflowError");
-                    }
-                } else {
-                    return o;
-                }
+                Object retVal = f.eval(env, fArgs);
+                return retVal;
 
             } else if (bl instanceof PrimaryBlock.DotIdentifier) {
                 PrimaryBlock.DotIdentifier dotIdentifier = (PrimaryBlock.DotIdentifier) bl;

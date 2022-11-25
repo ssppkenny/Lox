@@ -1,11 +1,24 @@
-fun f(x) {
-    if (x > 0)  {
-        return x*f(x-1);
-    } else {
-        return 1;
+class Fib {
+    fib1(n) {
+        if (n < 1) {
+            return 1;
+        } else {
+            return fib1(n-1) + fib1(n-2);
+        }
     }
 }
 
-var b = f(10);
-print b;
+var a = Fib();
+print a.fib1(10);
+
+fun fib1(n) {
+        if (n < 1) {
+            return 1;
+        } else {
+            return fib1(n-1) + fib1(n-2);
+        }
+}
+
+print fib1(10);
+
 

@@ -7,4 +7,25 @@ public class Utils {
         return true;
     }
 
+    public static Object show(Object o) {
+        if (o instanceof Double) {
+            Double d = (Double) o;
+            if (d.intValue() == d) {
+                return d.intValue();
+            } else {
+                return d;
+            }
+        } else {
+            return o;
+        }
+    }
+
+    public static Number show(Double d) {
+        if (d.intValue() == d) {
+            return d.intValue();
+        } else {
+            return d;
+        }
+    }
+
 }

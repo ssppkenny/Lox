@@ -25,7 +25,6 @@ public class Comparison {
 
     public Object eval(Map<String, Object> env) {
         Object eval = term.eval(env);
-        boolean first = Utils.isTruthy(eval);
         if (termElements.isEmpty()) {
             return eval;
         } else {

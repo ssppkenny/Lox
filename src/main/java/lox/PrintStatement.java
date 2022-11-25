@@ -19,7 +19,13 @@ public class PrintStatement implements Statement {
 
     @Override
     public Object eval(Map<String, Object> env) {
-        System.out.println(expression.eval(env));
+        Object o = expression.eval(env);
+        if (o instanceof Double) {
+            Double d = (Double) o;
+            System.out.println(Utils.show(d));
+        } else {
+            System.out.println(o);
+        }
         return null;
     }
 }
