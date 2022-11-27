@@ -3,6 +3,7 @@ package lox;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 
 public class ClassDeclaration implements Declaration {
@@ -25,7 +26,17 @@ public class ClassDeclaration implements Declaration {
         List<Declaration> declarations = new ArrayList<>();
         Function init = functions.stream().filter(function -> function.getIdentifier().equals("init")).findFirst().orElse(null);
         Parameters params = init == null ? new Parameters(new ArrayList<>()) : init.getParameters();
-        declarations.add(new ClassBodyExpressionStatement(identifier, functions));
+        Optional<ClassObject> declaredClass = optionalParentDeclaration.getDeclaredClass();
+        if (declaredClass.isPresent()) {
+            ClassObject classObject =  new ClassObject(identifier, functions, declaredClass.get(), env);
+            DeclaredClasses.addClass(identifier, classObject);
+            declarations.add(new ClassBodyExpressionStatement(identifier, functions, declaredClass.get()));
+        } else {
+            ClassObject classObject =  new ClassObject(identifier, functions, null, env);
+            DeclaredClasses.addClass(identifier, classObject);
+            declarations.add(new ClassBodyExpressionStatement(identifier, functions, null));
+        }
+
         Function constructor = new Function(identifier, params, new BlockStatement(declarations));
         env.put("function:" + identifier, constructor);
         return null;

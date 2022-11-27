@@ -1,0 +1,15 @@
+class A {
+    m1() {
+        print "m1";
+    }
+}
+
+class B < A {
+    m2() {
+        print "m2";
+    }
+}
+
+b = B();
+b.m1();
+b.m2();

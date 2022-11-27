@@ -810,7 +810,7 @@ public class Parser {
 //#line 77 "lox.y"
                 {
                     Parser.rule("optParentDecl: LESS IDENTIFIER", val_peek(1), val_peek(0));
-                    String s = ((Tree) val_peek(1).obj).sym;
+                    String s = ((Tree) val_peek(0).obj).sym;
                     yyval = new ParserVal(new ParentDeclaration(s));
                 }
                 break;

@@ -12,11 +12,14 @@ public class ClassObject {
 
     private Map<String, Object> env;
 
-    public ClassObject(String className, List<Function> functions, Map<String, Object> env) {
+    private ClassObject superclass;
+
+    public ClassObject(String className, List<Function> functions, ClassObject superclass, Map<String, Object> env) {
         this.className = className;
         this.functions = functions;
         this.env = new HashMap<>();
         this.env.putAll(env);
+        this.superclass = superclass;
     }
 
     public Object callFunction(String functionName, Map<String, Object> fArgs) {
@@ -35,7 +38,11 @@ public class ClassObject {
 
     private Function findFunction(String functionName) {
         Function function = functions.stream().filter(f -> f.getIdentifier().equals(functionName)).findFirst().orElse(null);
-        return function;
+        if (function == null) {
+            return superclass.getFunction(functionName);
+        } else {
+            return function;
+        }
     }
 
 

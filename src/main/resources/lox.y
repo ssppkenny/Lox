@@ -76,7 +76,7 @@ optParentDecl: {
 	| LESS IDENTIFIER
 	 {
 	    Parser.rule("optParentDecl: LESS IDENTIFIER", $1, $2);
-	    String s = ((Tree)$1.obj).sym;
+	    String s = ((Tree)$2.obj).sym;
 	    yyval = new ParserVal(new ParentDeclaration(s));
 	 }
 

@@ -9,10 +9,13 @@ public class ClassBodyExpressionStatement extends ExpressionStatement {
 
     private String className;
 
-    public ClassBodyExpressionStatement(String className, List<Function> functions) {
+    private ClassObject superclass;
+
+    public ClassBodyExpressionStatement(String className, List<Function> functions, ClassObject superclass) {
         super(null);
         this.functions = functions;
         this.className = className;
+        this.superclass = superclass;
 
     }
 
@@ -22,6 +25,8 @@ public class ClassBodyExpressionStatement extends ExpressionStatement {
 
     @Override
     public Object eval(Map<String, Object> env) {
-        return new ClassObject(className, functions, env);
+        ClassObject classObject =  new ClassObject(className, functions, superclass, env);
+        return classObject;
+
     }
 }
